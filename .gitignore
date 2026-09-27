@@ -1,0 +1,5 @@
+node_modules/
+users.json
+
+# Auxly - AI Task Management (internal data)
+.auxly/

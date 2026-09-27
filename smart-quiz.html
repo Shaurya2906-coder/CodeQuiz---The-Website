@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeQuiz - Smart Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+<div class="quiz-box">
+
+    <h1 id="title"></h1>
+
+    <h2 id="question-number" class="hidden"></h2>
+
+    <p id="smart-progress" class="smart-progress hidden"></p>
+
+    <h3 id="question-text" class="hidden"></h3>
+
+    <div class="options hidden" id="options"></div>
+
+    <div id="feedback" class="feedback hidden"></div>
+
+    <div id="questionNavigator" class="question-navigator hidden" aria-label="Question navigator"></div>
+
+<button id="nextButton" class="next hidden">Next Question</button>
+
+</div>
+
+<script src="practice-data.js"></script>
+<script src="quiz-quiz-bank.js"></script>
+<script src="quiz-data.js"></script>
+<script src="progress.js"></script>
+<script src="smart-quiz.js"></script>
+<script src="quiz-engine.js"></script>
+<script src="smart-quiz-page.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeQuiz Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <div class="header">
+
+        <div>
+            <h1>💻 CodeQuiz</h1>
+            <p>Test Your Coding Knowledge</p>
+        </div>
+
+        <button class="logout" onclick="logout()">
+            Logout
+        </button>
+
+    </div>
+
+
+    <div class="welcome">
+
+        <h2>Welcome Back! 👋</h2>
+
+        <p>
+            Choose practice by topic or take a timed quiz by difficulty.
+        </p>
+
+    </div>
+
+    <section class="practice-section">
+        <div class="practice-header">
+            <h3>Practice by Course</h3>
+            <p>Choose a course to start a focused set of MCQs.</p>
+        </div>
+
+        <div class="practice-grid">
+            <div class="practice-card python-card">
+                <h4>Python MCQs</h4>
+                <p>Syntax, loops, functions, and data structures.</p>
+                <button onclick="startPractice('Python')">Start Python</button>
+            </div>
+
+            <div class="practice-card c-card">
+                <h4>C MCQs</h4>
+                <p>Pointers, loops, arrays, and core programming concepts.</p>
+                <button onclick="startPractice('C')">Start C</button>
+            </div>
+
+            <div class="practice-card cpp-card">
+                <h4>C++ MCQs</h4>
+                <p>Classes, inheritance, templates, and OOP basics.</p>
+                <button onclick="startPractice('C++')">Start C++</button>
+            </div>
+
+            <div class="practice-card java-card">
+                <h4>Java MCQs</h4>
+                <p>Classes, methods, exceptions, and collections.</p>
+                <button onclick="startPractice('Java')">Start Java</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="practice-section">
+        <div class="practice-header">
+            <h3>Flashcards by Course</h3>
+            <p>Flip through key concepts and answers to reinforce learning.</p>
+        </div>
+
+        <div class="practice-grid">
+            <div class="practice-card python-card">
+                <h4>Python Flashcards</h4>
+                <p>Core syntax, functions, and data handling.</p>
+                <button onclick="startFlashcards('Python')">Study Python</button>
+            </div>
+
+            <div class="practice-card c-card">
+                <h4>C Flashcards</h4>
+                <p>Pointers, arrays, structures, and file handling.</p>
+                <button onclick="startFlashcards('C')">Study C</button>
+            </div>
+
+            <div class="practice-card cpp-card">
+                <h4>C++ Flashcards</h4>
+                <p>OOP, templates, STL, and memory management.</p>
+                <button onclick="startFlashcards('C++')">Study C++</button>
+            </div>
+
+            <div class="practice-card java-card">
+                <h4>Java Flashcards</h4>
+                <p>Collections, exceptions, threads, and data structures.</p>
+                <button onclick="startFlashcards('Java')">Study Java</button>
+            </div>
+        </div>
+    </section>
+
+
+<section class="progress-section" id="progressSection">
+        <div class="progress-header">
+            <h3>📊 Your Learning Progress</h3>
+            <p>Track your streaks, unlock achievements, and see your recent results.</p>
+            <button id="refreshProgressButton" class="refresh-progress" type="button" title="Refresh learning progress" aria-label="Refresh learning progress">
+                ↻ Refresh
+            </button>
+            <span id="progressRefreshStatus" class="progress-refresh-status" role="status" aria-live="polite"></span>
+        </div>
+
+        <!-- Stats cards -->
+        <div class="stats-grid" id="statsGrid">
+            <div class="stat-card">
+                <span class="stat-icon">🎯</span>
+                <div class="stat-value" id="statAvg">0%</div>
+                <div class="stat-label">Average Score</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📝</span>
+                <div class="stat-value" id="statAttempts">0</div>
+                <div class="stat-label">Sessions Completed</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🔥</span>
+<div class="stat-value" id="statStreak">0</div>
+                <div class="stat-label">Day Streak</div>
+            </div>
+        </div>
+
+        <div class="resume-section hidden" id="resumeSection">
+            <h4>Continue Learning</h4>
+            <p id="resumeDetails"></p>
+            <button type="button" onclick="resumeSession()">Resume</button>
+        </div>
+
+        <!-- Achievements -->
+        <div class="progress-subsection">
+            <h4>🏅 Achievements</h4>
+            <div class="badges-grid" id="badgesGrid"></div>
+        </div>
+
+        <!-- Recent results -->
+        <div class="progress-subsection">
+            <h4>🕘 Recent Results</h4>
+            <div class="recent-list" id="recentList">
+                <p class="empty-state">No sessions yet. Take a quiz to start tracking your progress!</p>
+            </div>
+        </div>
+</section>
+
+<section class="practice-section smart-section">
+        <div class="practice-header">
+            <h3>🎯 Smart Quiz</h3>
+            <p>Get a personalized quiz built around your weakest topics.</p>
+        </div>
+
+        <div class="smart-controls">
+            <select id="smartCourseSelect" aria-label="Smart quiz course">
+                <option value="">Select a course</option>
+                <option value="Python">Python</option>
+                       
+                <option value="C++">C++</option>
+                <option value="Java">Java</option>
+            </select>
+            <button id="smartGenerateBtn" class="smart-generate-btn">Generate Smart Quiz</button>
+        </div>
+
+        <div class="weakmap-header">
+            <h4>Weak-Spot Map</h4>
+            <p>Your lowest-scoring topics across all courses — the Smart Quiz focuses on these.</p>
+        </div>
+        <div class="weakmap-grid" id="weakmapGrid">
+            <p class="empty-state">No quiz history yet. Take a few quizzes and your weak spots will appear here.</p>
+        </div>
+    </section>
+
+    <div class="cards">
+
+
+        
+<div class="card python">
+
+            <i class="fa-brands fa-python"></i>
+
+            <h2>Python</h2>
+
+            <p>300 Quiz Questions</p>
+
+            <button onclick="startQuiz('Python')">
+                Start Quiz
+            </button>
+
+        </div>
+
+
+
+        
+        <div class="card c">
+
+            <i class="fa-solid fa-code"></i>
+
+            <h2>C</h2>
+
+            <p>300 Quiz Questions</p>
+
+            <button onclick="startQuiz('C')">
+                Start Quiz
+            </button>
+
+        </div>
+
+
+
+
+        <div class="card cpp">
+
+            <i class="fa-solid fa-laptop-code"></i>
+
+            <h2>C++</h2>
+
+            <p>300 Quiz Questions</p>
+
+            <button onclick="startQuiz('C++')">
+                Start Quiz
+            </button>
+
+        </div>
+
+
+
+
+        
+        <div class="card java">
+
+            <i class="fa-brands fa-java"></i>
+
+            <h2>Java</h2>
+
+            <p>300 Quiz Questions</p>
+
+            <button onclick="startQuiz('Java')">
+                Start Quiz
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+<script src="practice-data.js"></script>
+<script src="quiz-quiz-bank.js"></script>
+<script src="quiz-data.js"></script>
+<script src="progress.js"></script>
+    <script src="smart-quiz.js"></script>
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>

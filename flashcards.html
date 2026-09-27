@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeQuiz - Flashcards</title>
+    <link rel="stylesheet" href="flashcards.css">
+</head>
+<body>
+
+<div class="flash-box">
+
+    <h1 id="title"></h1>
+
+    <div class="flash-panel" id="setupPanel">
+        <label for="topicSelect">Study by Topic</label>
+        <div class="flash-select-wrap">
+            <select id="topicSelect" aria-label="Flashcard topic">
+                <option value="">Select topic</option>
+            </select>
+            <button id="startButton" class="next">Start Flashcards</button>
+        </div>
+    </div>
+
+<div class="progress hidden" id="progress"></div>
+
+    <div class="mastery-progress hidden" id="masteryProgress">
+        <div class="mastery-track">
+            <div class="mastery-fill" id="masteryFill"></div>
+        </div>
+        <span class="mastery-label" id="masteryLabel">0 known</span>
+    </div>
+
+    <div class="flashcard-stage hidden" id="stage">
+        <div class="flashcard" id="flashcard">
+            <div class="flashcard-inner">
+                <div class="flashcard-face flashcard-front">
+                    <span class="face-label">Topic</span>
+                    <p id="card-question"></p>
+                    <span class="hint">Click to flip for summary</span>
+                </div>
+                <div class="flashcard-face flashcard-back">
+                    <span class="face-label">Key Points</span>
+                    <ul id="card-answer"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flash-controls hidden" id="controls">
+        <button id="prevButton" class="nav-btn">← Previous</button>
+        <button id="flipButton" class="nav-btn">Flip Card</button>
+        <button id="nextButton" class="nav-btn">Next →</button>
+    </div>
+
+    <!-- Mastery self-assessment buttons (shown after flipping) -->
+    <div class="mastery-actions hidden" id="masteryActions">
+        <button id="againButton" class="mastery-btn again-btn">🔄 Study Again</button>
+        <button id="knowButton" class="mastery-btn know-btn">✅ I Know It</button>
+    </div>
+
+    <button id="backToDashboard" class="next hidden" style="background:#2563eb;">Back to Dashboard</button>
+
+    <div class="summary-screen hidden" id="summaryScreen">
+        <div class="summary-icon">🎉</div>
+        <h2>Deck Mastered!</h2>
+        <p class="summary-sub">You know every card in this topic.</p>
+        <div class="summary-stats">
+            <div class="summary-stat">
+                <span class="summary-value" id="summaryCards">0</span>
+                <span class="summary-label">Cards</span>
+            </div>
+            <div class="summary-stat">
+                <span class="summary-value" id="summaryFlips">0</span>
+                <span class="summary-label">Flips</span>
+            </div>
+            <div class="summary-stat">
+                <span class="summary-value" id="summaryStudies">0</span>
+                <span class="summary-label">Re-studied</span>
+            </div>
+        </div>
+        <button id="summaryRestart" class="next">Study Again</button>
+        <button id="summaryDashboard" class="next" style="background:#2563eb;">Back to Dashboard</button>
+    </div>
+
+</div>
+
+<script src="quiz-data.js"></script>
+<script src="java-practice-data.js"></script>
+<script src="flashcards-data.js"></script>
+<script src="progress.js"></script>
+<script src="flashcards.js"></script>
+
+</body>
+</html>
+

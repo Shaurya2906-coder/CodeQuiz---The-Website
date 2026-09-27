@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeQuiz - Quiz</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+
+<div class="quiz-box">
+
+    <h1 id="title"></h1>
+
+    <div class="difficulty-panel" id="setupPanel">
+        <label for="difficultySelect">Quiz Difficulty</label>
+        <div class="difficulty-select-wrap">
+            <select id="difficultySelect" aria-label="Quiz difficulty">
+                <option value="">Select difficulty</option>
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select>
+            <button id="quizStartButton" class="next">Start Quiz</button>
+        </div>
+    </div>
+
+    <h2 id="question-number" class="hidden"></h2>
+
+    <h3 id="question-text" class="hidden"></h3>
+
+    <div class="options hidden" id="options"></div>
+
+    <div id="feedback" class="feedback hidden"></div>
+
+    <div id="questionNavigator" class="question-navigator hidden" aria-label="Question navigator"></div>
+
+<button id="nextButton" class="next hidden">Next Question</button>
+
+    <button id="quitButton" class="next quit hidden">Quit</button>
+
+</div>
+
+<script src="quiz-data.js"></script>
+<script src="quiz-quiz-bank.js"></script>
+<script src="progress.js"></script>
+<script src="quiz-engine.js"></script>
+<script src="quiz.js"></script>
+
+</body>
+</html>
